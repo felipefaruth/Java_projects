@@ -13,16 +13,16 @@ public class Order {
 	private OrderStatus status;
 	private Client client;
 	
-	private List<ItensOrder> itens = new ArrayList<>();
+	private List<ItensOrder> itens = new ArrayList<ItensOrder>();
 	
 	public Order() {
 	}
 
 	
-	public Order(Date moment, Client client) {
+	public Order(Date moment, Client client, OrderStatus status) {
 		this.moment = moment;
 		this.client = client;
-		this.status = OrderStatus.PROCESSING;
+		this.status = status;
 	}
 	
 	public Double total(){
