@@ -6,7 +6,13 @@ public class PessoaJuridica extends Pessoa {
 
 	@Override
 	public double calcImposto() {
-		return 0;
+		double imp = 0;
+		if (num_func <= 10) {
+			imp = getRenda_anual() * 0.14;
+		}else if(num_func > 10 ) {
+			imp = getRenda_anual() * 0.16;
+		}
+		 return imp;
 	}
 
 	public PessoaJuridica() {
