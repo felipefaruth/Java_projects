@@ -17,7 +17,18 @@ public class PessoaFisica extends Pessoa{
 
 	@Override
 	public double calcImposto() {
-		return 0;
+		double imp = 0;
+		if (getRenda_anual() < 20000.0) {
+			imp = getRenda_anual() * 0.15;
+		}else if(getRenda_anual() >= 20000.0) {
+			imp = getRenda_anual() * 0.25;
+		}
+		
+		if(gastos_saude > 0) {
+			imp -= gastos_saude * 0.5;
+		}
+		
+		return imp;
 	}
 
 	public double getGastos_saude() {
