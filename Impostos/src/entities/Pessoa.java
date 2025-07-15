@@ -33,6 +33,4 @@ public abstract class Pessoa {
 	public void setRenda_anual(double renda_anual) {
 		this.renda_anual = renda_anual;
 	}
-	
-	
 }

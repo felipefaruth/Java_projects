@@ -14,9 +14,8 @@ public class PessoaJuridica extends Pessoa {
 		}
 		 return imp;
 	}
-
-	public PessoaJuridica() {
-		super();
+	
+	public PessoaJuridica(){
 	}
 	
 	public PessoaJuridica(String nome, double renda_anual, int num_func) {
@@ -31,7 +30,4 @@ public class PessoaJuridica extends Pessoa {
 	public void setNum_func(int num_func) {
 		this.num_func = num_func;
 	}
-	
-	
-	
 }

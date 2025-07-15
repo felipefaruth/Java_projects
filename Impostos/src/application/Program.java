@@ -38,9 +38,12 @@ public class Program {
 		}
 		
 		System.out.println("TAXAS PAGAS: ");
-		double soma = 0;
 		for(Pessoa c : list) {
 			System.out.println(c.getNome() + ": R$" + String.format("%,.2f", c.calcImposto()));
+		}
+		
+		double soma = 0;
+		for(Pessoa c : list) {
 			soma += c.calcImposto(); 
 		}
 		

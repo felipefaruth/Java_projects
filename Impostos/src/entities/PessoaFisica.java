@@ -4,16 +4,13 @@ public class PessoaFisica extends Pessoa{
 
 	private double gastos_saude;
 	
-	
-	public PessoaFisica() {
-		super();
+	public PessoaFisica(){
 	}
 	
 	public PessoaFisica(String nome, double renda_anual, double gastos_saude) {
 		super(nome, renda_anual);
 		this.gastos_saude = gastos_saude;
 	}
-
 
 	@Override
 	public double calcImposto() {
@@ -38,7 +35,4 @@ public class PessoaFisica extends Pessoa{
 	public void setGastos_saude(double gastos_saude) {
 		this.gastos_saude = gastos_saude;
 	}
-	
-	
-
 }
