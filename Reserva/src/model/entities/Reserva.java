@@ -1,6 +1,7 @@
 package model.entities;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Reserva {
 	private Integer numQrt;
@@ -18,8 +19,9 @@ public class Reserva {
 	}
 
 
-	public int duracao() {
-		return 0;
+	public long duracao() {
+		long diff = checkIn.getTime() - checkOut.getTime();
+		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
 	
 	public void atualizarData(Date checkOut, Date checkIn) {
