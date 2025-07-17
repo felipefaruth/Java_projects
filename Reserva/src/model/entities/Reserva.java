@@ -1,9 +1,12 @@
 package model.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Reserva {
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	
 	private Integer numQrt;
 	private Date checkIn;
 	private Date checkOut;
@@ -20,7 +23,7 @@ public class Reserva {
 
 
 	public long duracao() {
-		long diff = checkIn.getTime() - checkOut.getTime();
+		long diff = checkOut.getTime() - checkIn.getTime();
 		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
 	
@@ -48,4 +51,14 @@ public class Reserva {
 		return checkOut;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Quarto: " + numQrt + "\n"
+				+ "Check In: " + sdf.format(checkIn) + "\n"
+				+"Check Out: " + sdf.format(checkOut) + "\n" 
+				+ "Estadia: " + duracao() + " dias";
+	}
+
+	 
 }
