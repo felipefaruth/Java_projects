@@ -27,9 +27,16 @@ public class Reserva {
 		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
 	
-	public void atualizarData(Date checkOut, Date checkIn) {
+	public String atualizarData(Date checkOut, Date checkIn) {
+		Date now = new Date();
+		if (checkIn.before(now) || checkOut.before(now)) {
+			return "Datas inválidas: as novas dates devem ser posteriores a data atual.";
+		}else if(checkOut.before(checkIn)) {
+			return "Data de Check-out inválida: a nova data de check-out deve ser posterior a data de check-in.";
+		}
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
+		return null;
 	}
 
 
