@@ -38,7 +38,6 @@ public class Programa {
 					System.out.println("Resumo da reserva: ");
 					System.out.println(r.toString());
 				}
-			
 			}
 		sc.close();
 		}
