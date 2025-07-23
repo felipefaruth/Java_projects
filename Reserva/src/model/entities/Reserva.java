@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import model.exeptions.DomainException;
+
 public class Reserva {
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
@@ -13,9 +15,11 @@ public class Reserva {
 	
 	public Reserva() {
 	}
-
 	
-	public Reserva(Integer numQrt, Date checkIn, Date checkOut) {
+	public Reserva(Integer numQrt, Date checkIn, Date checkOut) throws DomainException {
+		if(checkOut.before(checkIn)) {
+			throw new DomainException("A nova data de check-out deve ser posterior a data de check-in.");
+		}
 		this.numQrt = numQrt;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
@@ -27,18 +31,16 @@ public class Reserva {
 		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
 	
-	public String atualizarData(Date checkOut, Date checkIn) {
+	public void atualizarData(Date checkOut, Date checkIn) throws DomainException {
 		Date now = new Date();
 		if (checkIn.before(now) || checkOut.before(now)) {
-			return "Datas inválidas: as novas dates devem ser posteriores a data atual.";
+			 throw new DomainException("As novas datas devem ser posteriores a data atual.");
 		}else if(checkOut.before(checkIn)) {
-			return "Data de Check-out inválida: a nova data de check-out deve ser posterior a data de check-in.";
+			throw new DomainException("A nova data de check-out deve ser posterior a data de check-in.");
 		}
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
-		return null;
 	}
-
 
 	public Integer getNumQrt() {
 		return numQrt;
